@@ -1,27 +1,32 @@
 import React from 'react';
+import profileImage from '../assets/profile.png'; // replace with your image path
 
 const About = () => {
   return (
-    <section id="about" style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative',
-      padding: '2rem',
-      zIndex: 2
-    }}>
-      <div style={{ maxWidth: '800px', textAlign: 'center' }}>
+    <section
+      id="about"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        padding: '2rem',
+        zIndex: 2,
+      }}
+    >
+      {/* Text container */}
+      <div style={{ maxWidth: '800px', textAlign: 'center', position: 'relative', zIndex: 2 }}>
         <h1 style={{ fontSize: '4rem', fontWeight: '700', color: '#fff', marginBottom: '1rem', lineHeight: '1.2' }}>
           Themis Dione C. Rañola
         </h1>
         <h2 style={{ fontSize: '1.8rem', color: '#60a5fa', marginBottom: '1.5rem', fontWeight: '400' }}>
-          Computer Science Student & Data Automation Specialist
+          Computer Science, Specializing in Data Science | Junior Finance Analyst | 
+          Data Automation | Financial Data Processing | Python Development
         </h2>
         <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: '1.8', marginBottom: '2rem' }}>
-          Aspiring Computer Scientist specializing in data automation, financial data processing, 
-          and software development. I build intelligent systems that improve workflow efficiency, 
-          accuracy, and decision-making.
+          Ambitious in designing and implementing systems for financial data processing and automation, helping 
+          teams work smarter, reduce manual tasks, and make faster, accurate decisions.
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href="mailto:tdcranola@gmail.com" style={{
@@ -58,6 +63,28 @@ const About = () => {
             LinkedIn Profile
           </a>
         </div>
+      </div>
+
+      {/* Image container (fully rounded) */}
+      <div style={{
+        position: 'absolute',
+        right: '-6rem',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        width: '300px',
+        height: '300px',
+        zIndex: 1
+      }}>
+        <img
+          src={profileImage}
+          alt="Themis Dione C. Rañola"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: '50%', // fully rounded (circle)
+          }}
+        />
       </div>
     </section>
   );

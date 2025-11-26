@@ -5,6 +5,7 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import Certifications from './components/Certifications';
 import Contact from "./components/Contact";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "experience", "projects", "skills", "contact"];
+      const sections = ["about", "experience", "projects", "skills", "certifications", "contact"];
       const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (!element) return false;
@@ -35,6 +36,7 @@ function App() {
         <Experience />
         <Projects />
         <Skills />
+        <Certifications />
         <Contact />
       </div>
     </div>

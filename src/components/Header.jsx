@@ -1,62 +1,65 @@
-import React, { useState, useEffect } from 'react';
+// src/components/Header.jsx
+import React from "react";
 
 const Header = ({ activeSection }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const sections = [
+    { id: "about", label: "About" },
+    { id: "experience", label: "Experience" },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "certifications", label: "Certifications" },
+    { id: "contact", label: "Contact" },
+  ];
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
-    <header style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 1000,
-      background: isScrolled ? 'rgba(15, 23, 42, 0.95)' : 'transparent',
-      backdropFilter: isScrolled ? 'blur(10px)' : 'none',
-      transition: 'all 0.3s ease',
-      borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none'
-    }}>
-      <nav style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '1.5rem 2rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}>
-        <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#fff', letterSpacing: '1px' }}>TR</div>
-        <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
-          {['About', 'Experience', 'Projects', 'Skills', 'Contact'].map(item => (
-            <li key={item}>
-              <button
-                onClick={() => scrollToSection(item.toLowerCase())}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: activeSection === item.toLowerCase() ? '#60a5fa' : '#94a3b8',
-                  cursor: 'pointer',
-                  fontSize: '0.95rem',
-                  fontWeight: '500',
-                  transition: 'color 0.3s ease',
-                  padding: '0.5rem 0'
-                }}
-                onMouseEnter={(e) => e.target.style.color = '#60a5fa'}
-                onMouseLeave={(e) => e.target.style.color = activeSection === item.toLowerCase() ? '#60a5fa' : '#94a3b8'}
-              >
-                {item}
-              </button>
-            </li>
-          ))}
-        </ul>
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        width: "100%",
+        background: "rgba(49, 1, 58, 0.9)",
+        backdropFilter: "blur(10px)",
+        zIndex: 100,
+        display: "flex",
+        justifyContent: "flex-end",
+        alignItems: "center",
+        padding: "0.75rem 0rem", // bigger top/bottom padding
+        minHeight: "20px", // ensures header is always tall enough
+      }}
+    >
+      {/* Navigation */}
+      <nav
+        style={{
+          display: "flex",
+          gap: "0.5rem", // space between buttons
+        }}
+      >
+        {sections.map((section) => (
+          <button
+            key={section.id}
+            onClick={() => handleScroll(section.id)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              color: activeSection === section.id ? "#60a5fa" : "#cbd5e1",
+              fontWeight: activeSection === section.id ? "600" : "500",
+              transition: "color 0.3s ease",
+              fontSize: "0.95rem",
+              padding: "0 0.5rem",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {section.label}
+          </button>
+        ))}
       </nav>
     </header>
   );

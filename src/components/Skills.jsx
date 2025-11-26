@@ -1,42 +1,54 @@
-import React from "react";
+// src/components/Skills.jsx
+import React from 'react';
+
+const skillCategories = [
+  {
+    category: 'Languages',
+    skills: ['Python', 'JavaScript', 'TypeScript', 'C++', 'C#', 'PHP', 'SQL']
+  },
+  {
+    category: 'Web Development',
+    skills: ['React.js', 'Node.js', 'Express.js', 'Next.js', 'Flask', 'FastAPI']
+  },
+  {
+    category: 'Data Science & ML',
+    skills: ['Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'Keras', 'OpenCV']
+  },
+  {
+    category: 'Databases',
+    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Firebase', 'SQLite']
+  },
+  {
+    category: 'Tools & Platforms',
+    skills: ['Docker', 'AWS', 'Git', 'GitHub Actions', 'Jira', 'Power BI']
+  }
+];
 
 const Skills = () => {
   return (
-    <section className="relative z-10 text-white p-8 max-w-3xl mx-auto">
-      <h2 className="text-3xl font-bold mb-4">Skills</h2>
-
-      <div className="grid grid-cols-2 gap-4 text-lg">
-        <div>
-          <h3 className="font-semibold">Technical</h3>
-          <ul className="list-disc pl-4">
-            <li>React + Vite</li>
-            <li>Tailwind CSS</li>
-            <li>Python</li>
-            <li>Data Analysis</li>
-            <li>Machine Learning Basics</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-semibold">Tools</h3>
-          <ul className="list-disc pl-4">
-            <li>Google Workspace</li>
-            <li>Notion</li>
-            <li>Excel / Sheets</li>
-            <li>PowerPoint</li>
-            <li>Git & GitHub</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-semibold">Soft Skills</h3>
-          <ul className="list-disc pl-4">
-            <li>Communication</li>
-            <li>Multitasking</li>
-            <li>Problem Solving</li>
-            <li>Leadership</li>
-          </ul>
-        </div>
+    <section id="skills" style={{ minHeight: '100vh', padding: '6rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <h2 style={{ fontSize: '2.5rem', color: '#fff', marginBottom: '3rem', fontWeight: '700' }}>Skills</h2>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+        {skillCategories.map((category, index) => (
+          <div key={index} style={{
+            background: 'rgba(30, 41, 59, 0.5)',
+            backdropFilter: 'blur(10px)',
+            padding: '2rem',
+            borderRadius: '12px',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            transition: 'all 0.3s ease'
+          }}>
+            <h3 style={{ fontSize: '1.5rem', color: '#60a5fa', marginBottom: '1rem', fontWeight: '600' }}>{category.category}</h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {category.skills.map((skill, i) => (
+                <li key={i} style={{ color: '#cbd5e1', marginBottom: '0.5rem', paddingLeft: '1.5rem', position: 'relative', lineHeight: '1.6' }}>
+                  <span style={{ position: 'absolute', left: 0, color: '#60a5fa' }}>▹</span>
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );

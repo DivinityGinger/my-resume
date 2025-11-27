@@ -1,19 +1,17 @@
 // src/components/Certifications.jsx
-import React from 'react';
+import React from "react";
+
+// Import images from assets folder
+import pythonCert from "../assets/certificates/Introduction to Data Science in Python.png";
+import googleCert from "../assets/certificates/Introduction to Data Analytics.png";
+import aiCert from "../assets/certificates/Introduction to Artificial Intelligence.png";
+import tfCert from "../assets/certificates/TensorFlow for CNNs-Learn and Practice CNNs.png";
 
 const certifications = [
-  {
-    title: 'Python for Data Science',
-    image: '/certificates/python_datascience.png' // replace with actual image path
-  },
-  {
-    title: 'Google Data Analytics',
-    image: '/certificates/google_data_analytics.png'
-  },
-  {
-    title: 'React Developer Certification',
-    image: '/certificates/react_dev_cert.png'
-  }
+  { image: pythonCert },
+  { image: googleCert },
+  { image: aiCert },
+  { image: tfCert },
 ];
 
 const Certifications = () => {
@@ -21,18 +19,19 @@ const Certifications = () => {
     <section
       id="certifications"
       style={{
-        minHeight: '80vh',
-        padding: '6rem 2rem',
-        maxWidth: '1200px',
-        margin: '0 auto'
+        minHeight: "80vh",
+        padding: "6rem 2rem",
+        maxWidth: "1200px",
+        margin: "0 auto",
       }}
     >
       <h2
         style={{
-          fontSize: '2.5rem',
-          color: '#fff',
-          marginBottom: '3rem',
-          fontWeight: '700'
+          fontSize: "2.5rem",
+          color: "#fff",
+          marginBottom: "3rem",
+          fontWeight: "700",
+          textAlign: "center",
         }}
       >
         Certifications
@@ -40,65 +39,58 @@ const Certifications = () => {
 
       <div
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '2rem',
-          justifyContent: 'center',
-          marginBottom: '2rem'
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)", // 2 columns
+          gridTemplateRows: "repeat(2, 1fr)",   // 2 rows
+          gap: "2rem",
+          alignItems: "stretch", // make all boxes equal height
+          marginBottom: "2rem",
         }}
       >
         {certifications.map((cert, index) => (
           <div
             key={index}
             style={{
-              flex: '1 1 calc(33% - 1rem)',
-              background: 'rgba(30, 41, 59, 0.5)',
-              backdropFilter: 'blur(10px)',
-              padding: '2rem',
-              borderRadius: '12px',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              textAlign: 'center',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer'
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              background: "rgba(30, 41, 59, 0.5)",
+              backdropFilter: "blur(10px)",
+              padding: "2rem",
+              borderRadius: "12px",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              transition: "all 0.3s ease",
+              cursor: "pointer",
             }}
           >
             <img
               src={cert.image}
-              alt={cert.title}
+              alt="Certificate"
               loading="lazy"
               style={{
-                maxWidth: '100%',
-                borderRadius: '8px',
-                marginBottom: '1rem'
+                maxWidth: "100%",
+                maxHeight: "100%", // ensures it fits inside box
+                borderRadius: "8px",
               }}
             />
-            <h3
-              style={{
-                fontSize: '1.2rem',
-                color: '#60a5fa',
-                fontWeight: '600'
-              }}
-            >
-              {cert.title}
-            </h3>
           </div>
         ))}
       </div>
 
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: "center" }}>
         <a
           href="https://drive.google.com/drive/folders/1euLazMB-3G7qLXC_78LeRwkVvTAWmbSr?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            display: 'inline-block',
-            padding: '0.75rem 1.5rem',
-            backgroundColor: '#60a5fa',
-            color: '#fff',
-            borderRadius: '8px',
-            fontWeight: '600',
-            textDecoration: 'none',
-            transition: 'all 0.3s ease'
+            display: "inline-block",
+            padding: "0.75rem 1.5rem",
+            backgroundColor: "#60a5fa",
+            color: "#fff",
+            borderRadius: "8px",
+            fontWeight: "600",
+            textDecoration: "none",
+            transition: "all 0.3s ease",
           }}
         >
           View All Certificates
